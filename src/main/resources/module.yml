@@ -1,6 +1,6 @@
 name: GravelandGuard
 main: dev.cwhead.GravesX.modules.gravelandguard.GravelandGuard
-version: 4.9.1.0
+version: ${project.version}
 description: "Protects a radius around grave."
 authors:
   - Legoman99573
