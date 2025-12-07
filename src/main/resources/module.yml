@@ -4,6 +4,8 @@ version: 4.9.1.0
 description: "Protects a radius around grave."
 authors:
   - Legoman99573
+  - Ranull
+  - JaySmethers
 website: https://github.com/Legoman99573/GravesXModule-GravelandGuard
 supportsFolia: true
 
