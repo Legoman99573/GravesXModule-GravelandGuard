@@ -1,0 +1,26 @@
+###################################
+# GravesX Module: Graveland Guard #
+###################################
+
+# Should the module be enabled?
+enabled: true
+
+# Should we debug?
+debug: false
+
+# Fallback locale code used when the player's locale is not available or file is missing
+locale-fallback: "en_us"
+
+protection:
+  # Square radius around a grave.
+  radius: 5.0
+  # Should we prevent block breaking? This does not affect the grave owner.
+  prevent-block-break: true
+  # Should we prevent block placement? This does not affect the grave owner.
+  prevent-block-place: true
+  # Should the grave owner be allowed to place/break blocks regardless?
+  allow-grave-owner-place-break: false
+  # Should we prevent blocks in radius from being affected by explosions?
+  prevent-explosions: true
+  # Should we allow pvp in a protected grave radius?
+  allow-pvp: false

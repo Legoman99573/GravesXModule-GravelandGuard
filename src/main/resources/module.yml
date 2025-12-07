@@ -1,0 +1,25 @@
+name: GravelandGuard
+main: dev.cwhead.GravesX.modules.gravelandguard.GravelandGuard
+version: 4.9.1.0
+description: "Protects a radius around grave."
+authors:
+  - Legoman99573
+website: https://github.com/Legoman99573/GravesX/wiki/Modules
+supportsFolia: true
+
+permissions:
+  graves.gravelandguard.bypass:
+    description: "Bypass gravelandguard protection."
+    default: op
+  graves.gravelandguard.reload:
+    description: "Allows reloading GravelandGuard config."
+    default: op
+
+commands:
+  ggreload:
+    description: "Main GravelandGuard reload command."
+    usage: "/ggreload"
+    permission: "graves.gravelandguard.reload"
+    aliases: ["glg"]
+    executor: dev.cwhead.GravesX.modules.gravelandguard.command.GravelandGuardCommand
+    tab-completer: ""

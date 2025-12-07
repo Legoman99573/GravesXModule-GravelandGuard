@@ -1,0 +1,4 @@
+gravelandguard:
+  protection:
+    deny-modify: "&cYou cannot modify blocks near a grave."
+    deny-pvp: "&cYou cannot fight so close to a grave."
