@@ -198,12 +198,13 @@ public class GravelandGuardFoliaListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
-        if (!ctx.getConfig().getBoolean("protection.allow-pvp", false)) return;
+        if (ctx.getConfig().getBoolean("protection.allow-pvp", false)) return;
+
         if (!(event.getEntity() instanceof Player victim)) return;
         if (!(event.getDamager() instanceof Player damager)) return;
 
-        if (ctx.getPlugin().getPermissionManager().hasGrantedPermission(BYPASS_PERMISSION, victim.getPlayer())
-                || ctx.getPlugin().getPermissionManager().hasGrantedPermission(BYPASS_PERMISSION, damager.getPlayer())) return;
+        if (ctx.getPlugin().getPermissionManager().hasGrantedPermission(BYPASS_PERMISSION, victim)
+                || ctx.getPlugin().getPermissionManager().hasGrantedPermission(BYPASS_PERMISSION, damager)) return;
 
         Location anchor = damager.getLocation();
 
