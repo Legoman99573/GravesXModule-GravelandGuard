@@ -7,7 +7,7 @@
 
     <groupId>dev.cwhead.GravesX.modules</groupId>
     <artifactId>GravesXModule-GravelandGuard</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -26,7 +26,7 @@
         <dependency>
             <groupId>com.ranull</groupId>
             <artifactId>GravesX</artifactId>
-            <version>4.9.9.2-api</version>
+            <version>4.9.10.1-api</version>
             <scope>provided</scope>
         </dependency>
 
@@ -34,32 +34,6 @@
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
             <version>1.21.10-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.Anon8281</groupId>
-            <artifactId>UniversalScheduler</artifactId>
-            <version>0.1.7</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>net.kyori</groupId>
-            <artifactId>adventure-text-minimessage</artifactId>
-            <version>4.24.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.kyori</groupId>
-            <artifactId>adventure-text-serializer-gson</artifactId>
-            <version>4.24.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.kyori</groupId>
-            <artifactId>adventure-platform-bukkit</artifactId>
-            <version>4.4.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -25,6 +25,7 @@ public final class GravelandGuard extends GravesXModule {
     public void onModuleEnable(ModuleContext ctx) {
         if (!ctx.getConfig().getBoolean("enabled", true)) {
             ctx.getLogger().info("[GravelandGuard] Disabled via config.");
+            ctx.getGravesXModules().disableModule(this.toString());
             return;
         }
 

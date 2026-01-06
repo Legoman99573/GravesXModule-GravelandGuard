@@ -39,12 +39,11 @@ public class GravelandGuardListener implements Listener {
         if (!ctx.getConfig().getBoolean("protection.prevent-block-break", true)) return;
 
         Player player = event.getPlayer();
-        if (ctx.getPlugin().hasGrantedPermission(BYPASS_PERMISSION, player.getPlayer())) return;
+        if (ctx.getPlugin().getPermissionManager().hasGrantedPermission(BYPASS_PERMISSION, player.getPlayer())) return;
 
         Location loc = event.getBlock().getLocation();
         boolean allowOwner = ctx.getConfig().getBoolean("protection.allow-grave-owner-place-break", false);
 
-        // If owners are allowed, only block if this location is protected *from this player*
         if (allowOwner) {
             if (isLocationProtectedForPlayer(loc, player)) {
                 event.setCancelled(true);
@@ -64,7 +63,7 @@ public class GravelandGuardListener implements Listener {
         if (!ctx.getConfig().getBoolean("protection.prevent-block-place", true)) return;
 
         Player player = event.getPlayer();
-        if (ctx.getPlugin().hasGrantedPermission(BYPASS_PERMISSION, player.getPlayer())) return;
+        if (ctx.getPlugin().getPermissionManager().hasGrantedPermission(BYPASS_PERMISSION, player.getPlayer())) return;
 
         Location loc = event.getBlock().getLocation();
         boolean allowOwner = ctx.getConfig().getBoolean("protection.allow-grave-owner-place-break", false);
@@ -185,12 +184,13 @@ public class GravelandGuardListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
-        if (!ctx.getConfig().getBoolean("protection.allow-pvp", false)) return;
+        if (ctx.getConfig().getBoolean("protection.allow-pvp", false)) return;
+
         if (!(event.getEntity() instanceof Player victim)) return;
         if (!(event.getDamager() instanceof Player damager)) return;
 
-        if (ctx.getPlugin().hasGrantedPermission(BYPASS_PERMISSION, victim.getPlayer())
-                || ctx.getPlugin().hasGrantedPermission(BYPASS_PERMISSION, damager.getPlayer())) return;
+        if (ctx.getPlugin().getPermissionManager().hasGrantedPermission(BYPASS_PERMISSION, victim)
+                || ctx.getPlugin().getPermissionManager().hasGrantedPermission(BYPASS_PERMISSION, damager)) return;
 
         if (isWithinAnyGraveRadius(victim.getLocation()) || isWithinAnyGraveRadius(damager.getLocation())) {
             event.setCancelled(true);

@@ -52,7 +52,7 @@ public final class GravelandGuardI18n {
 
     public void sendDenyModify(Entity entity) {
         if (entity instanceof Player player) {
-            if (ctx.getPlugin().getIntegrationManager().hasMiniMessage()) {
+            if (plugin.getIntegrationManager().hasMiniMessage()) {
                 String mainMessage = MiniMessage.convertLegacyToMiniMessage(resolveForEntity(entity, KEY_DENY_MODIFY, FALLBACK_DENY_MODIFY));
                 player.sendMessage(MiniMessage.parseString(mainMessage));
             } else {
@@ -63,7 +63,7 @@ public final class GravelandGuardI18n {
 
     public void sendDenyPvp(Entity entity) {
         if (entity instanceof Player player) {
-            if (ctx.getPlugin().getIntegrationManager().hasMiniMessage()) {
+            if (plugin.getIntegrationManager().hasMiniMessage()) {
                 String mainMessage = MiniMessage.convertLegacyToMiniMessage(resolveForEntity(entity, KEY_DENY_PVP, FALLBACK_DENY_PVP));
                 player.sendMessage(MiniMessage.parseString(mainMessage));
             } else {

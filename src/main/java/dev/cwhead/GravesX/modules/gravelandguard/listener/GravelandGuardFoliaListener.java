@@ -40,7 +40,7 @@ public class GravelandGuardFoliaListener implements Listener {
         if (!ctx.getConfig().getBoolean("protection.prevent-block-break", true)) return;
 
         Player player = event.getPlayer();
-        if (ctx.getPlugin().hasGrantedPermission(BYPASS_PERMISSION, player.getPlayer())) return;
+        if (ctx.getPlugin().getPermissionManager().hasGrantedPermission(BYPASS_PERMISSION, player.getPlayer())) return;
 
         Block block = event.getBlock();
         Location loc = block.getLocation();
@@ -66,7 +66,7 @@ public class GravelandGuardFoliaListener implements Listener {
         if (!ctx.getConfig().getBoolean("protection.prevent-block-place", true)) return;
 
         Player player = event.getPlayer();
-        if (ctx.getPlugin().hasGrantedPermission(BYPASS_PERMISSION, player.getPlayer())) return;
+        if (ctx.getPlugin().getPermissionManager().hasGrantedPermission(BYPASS_PERMISSION, player.getPlayer())) return;
 
         Block block = event.getBlock();
         Location loc = block.getLocation();
@@ -202,8 +202,8 @@ public class GravelandGuardFoliaListener implements Listener {
         if (!(event.getEntity() instanceof Player victim)) return;
         if (!(event.getDamager() instanceof Player damager)) return;
 
-        if (ctx.getPlugin().hasGrantedPermission(BYPASS_PERMISSION, victim.getPlayer())
-                || ctx.getPlugin().hasGrantedPermission(BYPASS_PERMISSION, damager.getPlayer())) return;
+        if (ctx.getPlugin().getPermissionManager().hasGrantedPermission(BYPASS_PERMISSION, victim.getPlayer())
+                || ctx.getPlugin().getPermissionManager().hasGrantedPermission(BYPASS_PERMISSION, damager.getPlayer())) return;
 
         Location anchor = damager.getLocation();
 
@@ -253,20 +253,6 @@ public class GravelandGuardFoliaListener implements Listener {
 
     /**
      * Folia-safe owner check using cached graves only.
-     *
-     * Protection logic (for this specific player):
-     * - Compute all graves covering this location.
-     * - hasPlayerGrave = any of those belong to this player.
-     * - hasOtherOwnedGrave = any of those belong to someone else (or owner null).
-     *
-     * The location is considered *protected from this player* iff:
-     *   - there is at least one other player's grave at this location AND
-     *   - there is NO grave at this location owned by this player.
-     *
-     * This means:
-     *   - Only their own grave: not protected (they can build/break).
-     *   - Overlapping graves including theirs: not protected for them.
-     *   - Only other players' graves (or owner-null graves): protected.
      */
     private boolean isLocationProtectedForPlayer(Location location, Player player) {
         if (location == null || location.getWorld() == null || player == null) {

@@ -34,7 +34,7 @@ public final class GravelandGuardCommand implements GravesXModuleCommand {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
         if (sender instanceof Player player) {
-            if (ctx.getPlugin().hasGrantedPermission("graves.gravelandguard.reload", player.getPlayer())) {
+            if (ctx.getPlugin().getPermissionManager().hasGrantedPermission("graves.gravelandguard.reload", player.getPlayer())) {
                 sender.sendMessage("GravelandGuard:" + ChatColor.RED + " You do not have permission to run this command.");
                 return false;
             }
